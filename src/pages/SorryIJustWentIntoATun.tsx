@@ -55,7 +55,6 @@ const SorryIJustWentIntoATunn = () => {
   useEffect(() => {
     if (volume < 0.1 && inVolume < 0.1 && connected) {
       const interval = setInterval(() => {
-        console.log("on no speak");
         client.send([
           {
             text: "[Your boss has not spoken for a while. Try and start the conversation about the issues in the report]",
@@ -77,7 +76,6 @@ const SorryIJustWentIntoATunn = () => {
       newSignal = Math.round(newSignal / 0.2) * 0.2;
       setSignal(newSignal);
 
-      console.log(audioStreamer);
       if (audioStreamer?.current) {
         const streamerSignalParam =
           audioStreamer?.current?.poorSignalWorklet?.parameters.get("signal");

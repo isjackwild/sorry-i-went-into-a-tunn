@@ -31,7 +31,6 @@ export const audioContext: (
   return async (options?: GetAudioContextOptions) => {
     let timeout = -1;
     try {
-      console.log("Try play");
       const a = new Audio();
       a.src =
         "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";

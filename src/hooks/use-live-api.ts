@@ -75,11 +75,8 @@ export function useLiveAPI({
   // register audio for streaming server -> speakers
   useEffect(() => {
     if (!audioStreamerRef.current) {
-      console.log("Try Create Audio Streamer!");
       audioContext({ id: "audio-out" }).then((audioCtx: AudioContext) => {
-        console.log("Got CTX");
         audioStreamerRef.current = new AudioStreamer(audioCtx);
-        console.log("Created Audio Streamer!");
         audioStreamerRef.current
           .addWorklet<any>("vumeter-out", VolMeterWorket, (ev: any) => {
             setVolume(ev.data.volume);
