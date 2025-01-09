@@ -51,6 +51,7 @@ export class AudioStreamer {
         this.context,
         "audio-recorder-signal-worklet"
       );
+      // @ts-ignore
       this.gainNode.connect(this.poorSignalWorklet);
       this.poorSignalWorklet.connect(context.destination);
     })();
@@ -170,7 +171,7 @@ export class AudioStreamer {
       const worklets = registeredWorklets.get(this.context);
 
       if (worklets) {
-        Object.entries(worklets).forEach(([workletName, graph]) => {
+        Object.entries(worklets).forEach(([_workletName, graph]) => {
           const { node, handlers } = graph;
           if (node) {
             source.connect(node);

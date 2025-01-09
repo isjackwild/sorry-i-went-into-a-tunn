@@ -105,7 +105,7 @@ export function useLiveAPI({
   }, [client]);
 
   const connect = useCallback(
-    async (config) => {
+    async (config: any) => {
       if (!config) {
         throw new Error("config has not been set");
       }

@@ -1,19 +1,12 @@
 import styles from "./SorryIJustWentIntoATunn.module.scss";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLiveAPIContext } from "../contexts/LiveAPIContext";
 import SorryIJustWentIntoATunnPhone from "../components/SorryIJustWentIntoATunnPhone/SorryIJustWentIntoATunnPhone";
 import { SYSTEM_INSTRUCTIONS } from "../CONSTANTS";
 
 const SorryIJustWentIntoATunn = () => {
-  const {
-    client,
-    connected,
-    connect,
-    disconnect,
-    volume,
-    audioStreamer,
-    audioRecorder,
-  } = useLiveAPIContext();
+  const { client, connected, connect, volume, audioStreamer, audioRecorder } =
+    useLiveAPIContext();
   const [inVolume, setInVolume] = useState(0);
   const [signal, setSignal] = useState(1);
 
@@ -120,10 +113,7 @@ const SorryIJustWentIntoATunn = () => {
           height="315"
           src="https://www.youtube.com/embed/iso5vTiUmHE?si=k_jjB0LmpYtU3Fzb&controls=0&autoplay=1&loop=1&mute=1&showinfo=0&modestbranding=1"
           title="YouTube video player"
-          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
         ></iframe>
         <SorryIJustWentIntoATunnPhone signal={signal} />
       </main>
