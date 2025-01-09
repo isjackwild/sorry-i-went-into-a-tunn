@@ -1,6 +1,6 @@
 import SorryIJustWentIntoATunnPhoneIntro from "../SorryIJustWentIntoATunnPhone/SorryIJustWentIntoATunnPhoneIntro";
 import styles from "./EnterAPIKey.module.scss";
-import { ChangeEvent, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import backgroundVideo from "../../assets/Tour of the Eurostar Departure Lounge St Pancras International [pCkmEgsdBDU].mp4";
 import audioVideo from "../../assets/[Sound] Eurostar Boarding Announcements at London St. Pancras (28.10.2019) ｜ ユーロスター乗車案内放送 [ESoW0ngJ9rY].mp4";
 
@@ -56,7 +56,7 @@ const EnterAPIKey = ({
           playsInline
           // muted
           autoPlay
-          onPlay={(e) => (e.target.volume = 0.2)}
+          onPlay={(e) => ((e.target as HTMLVideoElement).volume = 0.2)}
         />
       ) : null}
       <video

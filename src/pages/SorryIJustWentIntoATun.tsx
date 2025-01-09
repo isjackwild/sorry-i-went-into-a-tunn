@@ -113,7 +113,7 @@ const SorryIJustWentIntoATunn = () => {
         playsInline
         // muted
         autoPlay
-        onPlay={(e) => (e.target.volume = 0.2)}
+        onPlay={(e) => ((e.target as HTMLVideoElement).volume = 0.2)}
       />
       <main>
         <SorryIJustWentIntoATunnPhone signal={signal} />

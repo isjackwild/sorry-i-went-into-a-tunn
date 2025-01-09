@@ -1,8 +1,5 @@
 import styles from "./SorryIJustWentIntoATunnPhone.module.scss";
 import phoneSrc from "../../assets/PhoneWithMask-0.png";
-import SorryIJustWentIntoATunnSignalBar from "../SorryIJustWentIntoATunnSignalBar/SorryIJustWentIntoATunnSignalBar";
-import SorryIJustWentIntoATunnNetwork from "../SorryIJustWentIntoATunnNetwork/SorryIJustWentIntoATunnNetwork";
-import SorryIJustWentIntoATunnTimer from "../SorryIJustWentIntoATunnTimer/SorryIJustWentIntoATunnTimer";
 import { ChangeEvent } from "react";
 
 const SorryIJustWentIntoATunnPhoneIntro = ({
