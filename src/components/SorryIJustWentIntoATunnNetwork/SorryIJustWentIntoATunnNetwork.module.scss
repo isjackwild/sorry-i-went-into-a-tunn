@@ -1,0 +1,23 @@
+.root {
+  position: absolute;
+  font-size: 3vh;
+  left: 50%;
+  top: 20.5%;
+  transform: translateX(-50%);
+  width: 6%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.25vh solid #fff;
+  border-radius: 0.6vh;
+}
+
+.type {
+  font-family: "Roboto Mono", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.25vh;
+  color: #fff;
+}
