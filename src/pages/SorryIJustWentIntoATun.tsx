@@ -116,7 +116,7 @@ const SorryIJustWentIntoATunn = () => {
         onPlay={(e) => ((e.target as HTMLVideoElement).volume = 0.2)}
       />
       <main>
-        <SorryIJustWentIntoATunnPhone signal={signal} />
+        <SorryIJustWentIntoATunnPhone signal={signal} connected={connected} />
       </main>
     </div>
   );

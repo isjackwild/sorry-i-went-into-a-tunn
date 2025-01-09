@@ -4,7 +4,13 @@ import SorryIJustWentIntoATunnSignalBar from "../SorryIJustWentIntoATunnSignalBa
 import SorryIJustWentIntoATunnNetwork from "../SorryIJustWentIntoATunnNetwork/SorryIJustWentIntoATunnNetwork";
 import SorryIJustWentIntoATunnTimer from "../SorryIJustWentIntoATunnTimer/SorryIJustWentIntoATunnTimer";
 
-const SorryIJustWentIntoATunnPhone = ({ signal }: { signal: number }) => {
+const SorryIJustWentIntoATunnPhone = ({
+  signal,
+  connected,
+}: {
+  signal: number;
+  connected: boolean;
+}) => {
   return (
     <div className={styles.root}>
       <video
@@ -24,7 +30,7 @@ const SorryIJustWentIntoATunnPhone = ({ signal }: { signal: number }) => {
         alt="Smartphone illustration"
       />
       <SorryIJustWentIntoATunnNetwork signal={signal} />
-      <SorryIJustWentIntoATunnTimer />
+      <SorryIJustWentIntoATunnTimer connected={connected} />
     </div>
   );
 };
