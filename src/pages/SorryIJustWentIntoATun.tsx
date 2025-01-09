@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useLiveAPIContext } from "../contexts/LiveAPIContext";
 import SorryIJustWentIntoATunnPhone from "../components/SorryIJustWentIntoATunnPhone/SorryIJustWentIntoATunnPhone";
 import { SYSTEM_INSTRUCTIONS } from "../CONSTANTS";
+import backgroundVideo from "../assets/French English announcements greeting passengers on board TGV Eurostar train at Paris Gare du Nord [iso5vTiUmHE].mp4";
 
 const SorryIJustWentIntoATunn = () => {
   const { client, connected, connect, volume, audioStreamer, audioRecorder } =
@@ -106,18 +107,15 @@ const SorryIJustWentIntoATunn = () => {
       {/* <button onClick={connected ? onStop : onStart}>
         {connected ? "Stop" : "Start"} Streaming
       </button> */}
+      <video
+        className={styles.background}
+        src={backgroundVideo}
+        playsInline
+        // muted
+        autoPlay
+        onPlay={(e) => (e.target.volume = 0.2)}
+      />
       <main>
-        <iframe
-          className={styles.video}
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/iso5vTiUmHE?si=k_jjB0LmpYtU3Fzb&controls=0&autoplay=1&loop=1&mute=1&showinfo=0&modestbranding=1"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
         <SorryIJustWentIntoATunnPhone signal={signal} />
       </main>
     </div>

@@ -8,7 +8,7 @@ const uri = `wss://${host}/ws/google.ai.generativelanguage.v1alpha.GenerativeSer
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string;
 
 const App = () => {
-  const [apiKey, setApiKey] = useState(API_KEY);
+  const [apiKey, setApiKey] = useState("");
   const [userStarted, setUserStarted] = useState(false);
 
   if (!apiKey || !userStarted) {
