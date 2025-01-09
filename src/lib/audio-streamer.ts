@@ -54,6 +54,7 @@ export class AudioStreamer {
       // @ts-ignore
       this.gainNode.connect(this.poorSignalWorklet);
       this.poorSignalWorklet.connect(context.destination);
+      // this.gainNode.connect(context.destination);
     })();
 
     this.addPCM16 = this.addPCM16.bind(this);

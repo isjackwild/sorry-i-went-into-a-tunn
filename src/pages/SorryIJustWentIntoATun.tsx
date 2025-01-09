@@ -38,7 +38,7 @@ const SorryIJustWentIntoATunn = () => {
         },
       ],
     });
-    audioRecorder?.on("volume", setInVolume);
+    audioRecorder?.current?.on("volume", setInVolume);
 
     client.send([
       {
@@ -77,15 +77,16 @@ const SorryIJustWentIntoATunn = () => {
       newSignal = Math.round(newSignal / 0.2) * 0.2;
       setSignal(newSignal);
 
-      if (audioStreamer) {
+      console.log(audioStreamer);
+      if (audioStreamer?.current) {
         const streamerSignalParam =
-          audioStreamer?.poorSignalWorklet?.parameters.get("signal");
+          audioStreamer?.current?.poorSignalWorklet?.parameters.get("signal");
         streamerSignalParam!.value = newSignal;
       }
 
-      if (audioRecorder) {
+      if (audioRecorder?.current) {
         const recorderSignalParam =
-          audioRecorder?.poorSignalWorklet?.parameters.get("signal");
+          audioRecorder?.current?.poorSignalWorklet?.parameters.get("signal");
         if (recorderSignalParam) {
           recorderSignalParam.value = Math.min(1, newSignal * 1.5);
         }
@@ -98,7 +99,7 @@ const SorryIJustWentIntoATunn = () => {
     return () => {
       clearTimeout(timeout);
     };
-  }, [connected]);
+  }, [connected, audioStreamer, audioRecorder]);
 
   // useEffect(() => {}, []);
 
@@ -113,6 +114,7 @@ const SorryIJustWentIntoATunn = () => {
         playsInline
         // muted
         autoPlay
+        loop
         onPlay={(e) => ((e.target as HTMLVideoElement).volume = 0.2)}
       />
       <main>

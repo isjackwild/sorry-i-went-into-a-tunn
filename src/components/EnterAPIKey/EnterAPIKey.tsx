@@ -56,6 +56,7 @@ const EnterAPIKey = ({
           playsInline
           // muted
           autoPlay
+          loop
           onPlay={(e) => ((e.target as HTMLVideoElement).volume = 0.2)}
         />
       ) : null}

@@ -14,7 +14,15 @@
  * limitations under the License.
  */
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  MutableRefObject,
+  Ref,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   MultimodalLiveAPIClientConnection,
   MultimodalLiveClient,
@@ -30,8 +38,8 @@ export type UseLiveAPIResults = {
   connect: (config: any) => Promise<void>;
   disconnect: () => Promise<void>;
   volume: number;
-  audioStreamer?: AudioStreamer | null;
-  audioRecorder?: AudioRecorder | null;
+  audioStreamer?: MutableRefObject<AudioStreamer | null> | null;
+  audioRecorder?: MutableRefObject<AudioRecorder | null> | null;
 };
 
 export function useLiveAPI({
@@ -68,8 +76,11 @@ export function useLiveAPI({
   // register audio for streaming server -> speakers
   useEffect(() => {
     if (!audioStreamerRef.current) {
+      console.log("Try Create Audio Streamer!");
       audioContext({ id: "audio-out" }).then((audioCtx: AudioContext) => {
+        console.log("Got CTX");
         audioStreamerRef.current = new AudioStreamer(audioCtx);
+        console.log("Created Audio Streamer!");
         audioStreamerRef.current
           .addWorklet<any>("vumeter-out", VolMeterWorket, (ev: any) => {
             setVolume(ev.data.volume);
@@ -127,7 +138,7 @@ export function useLiveAPI({
     connect,
     disconnect,
     volume,
-    audioStreamer: audioStreamerRef.current,
-    audioRecorder: audioRecorderRef.current,
+    audioStreamer: audioStreamerRef,
+    audioRecorder: audioRecorderRef,
   };
 }

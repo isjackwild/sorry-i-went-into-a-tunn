@@ -8,7 +8,7 @@ class PoorSignalWorklet extends AudioWorkletProcessor {
     return [
       {
         name: 'signal', 
-        defaultValue: 1, 
+        defaultValue: 0.1, 
         minValue: 0, 
         maxValue: 1 
       }

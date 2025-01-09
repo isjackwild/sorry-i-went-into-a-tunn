@@ -21,21 +21,49 @@ export type GetAudioContextOptions = AudioContextOptions & {
 const map: Map<string, AudioContext> = new Map();
 
 export const audioContext: (
-  options?: GetAudioContextOptions,
+  options?: GetAudioContextOptions
 ) => Promise<AudioContext> = (() => {
   const didInteract = new Promise((res) => {
-    window.addEventListener("pointerdown", res, { once: true });
-    window.addEventListener("keydown", res, { once: true });
+    window.addEventListener("pointerdown", res, { once: false });
+    window.addEventListener("keydown", res, { once: false });
   });
 
   return async (options?: GetAudioContextOptions) => {
+    let timeout = -1;
     try {
+      console.log("Try play");
       const a = new Audio();
       a.src =
         "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
-      await a.play();
+
+      // Gross iOS hack below sorry very inelegant of me
+      let didPlay = false;
+      const playPromise = new Promise((resolve, reject) => {
+        a.play()
+          .then(() => {
+            didPlay = true;
+            resolve(true);
+          })
+          .catch(() => {
+            clearTimeout(timeout);
+            reject();
+          });
+      });
+      const timeoutPromise = new Promise((resolve, _reject) => {
+        timeout = setTimeout(function () {
+          resolve(true);
+        }, 1111);
+      });
+      await Promise.race([playPromise, timeoutPromise]);
+      clearTimeout(timeout);
+      if (!didPlay) {
+        throw new Error("Did not play in time");
+      }
+      // await a.play();
+
       if (options?.id && map.has(options.id)) {
         const ctx = map.get(options.id);
+        ctx?.resume();
         if (ctx) {
           return ctx;
         }
@@ -46,9 +74,11 @@ export const audioContext: (
       }
       return ctx;
     } catch (e) {
+      clearTimeout(timeout);
       await didInteract;
       if (options?.id && map.has(options.id)) {
         const ctx = map.get(options.id);
+        ctx?.resume();
         if (ctx) {
           return ctx;
         }
