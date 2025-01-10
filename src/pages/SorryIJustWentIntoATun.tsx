@@ -5,9 +5,9 @@ import SorryIJustWentIntoATunnPhone from "../components/SorryIJustWentIntoATunnP
 import { SYSTEM_INSTRUCTIONS } from "../CONSTANTS";
 import backgroundVideo from "../assets/French English announcements greeting passengers on board TGV Eurostar train at Paris Gare du Nord [iso5vTiUmHE].mp4";
 
-function easeOutQuad(x: number): number {
-  return 1 - (1 - x) * (1 - x);
-}
+// function easeOutQuad(x: number): number {
+//   return 1 - (1 - x) * (1 - x);
+// }
 
 const SorryIJustWentIntoATunn = () => {
   const { client, connected, connect, volume, audioStreamer, audioRecorder } =
