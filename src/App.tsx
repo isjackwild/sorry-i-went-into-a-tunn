@@ -6,7 +6,7 @@ import EnterAPIKey from "./components/EnterAPIKey/EnterAPIKey";
 const host = "generativelanguage.googleapis.com";
 const uri = `wss://${host}/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent`;
 let API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string;
-// API_KEY = "";
+API_KEY = "";
 
 const App = () => {
   const [apiKey, setApiKey] = useState(API_KEY);

@@ -5,6 +5,10 @@ import SorryIJustWentIntoATunnPhone from "../components/SorryIJustWentIntoATunnP
 import { SYSTEM_INSTRUCTIONS } from "../CONSTANTS";
 import backgroundVideo from "../assets/French English announcements greeting passengers on board TGV Eurostar train at Paris Gare du Nord [iso5vTiUmHE].mp4";
 
+function easeOutQuad(x: number): number {
+  return 1 - (1 - x) * (1 - x);
+}
+
 const SorryIJustWentIntoATunn = () => {
   const { client, connected, connect, volume, audioStreamer, audioRecorder } =
     useLiveAPIContext();
@@ -72,7 +76,8 @@ const SorryIJustWentIntoATunn = () => {
     let timeout = -1;
     const updateSignal = () => {
       let newSignal =
-        Math.cos(Date.now() * 0.001) * 0.25 + 0.25 + Math.random() * 0.75;
+        Math.cos(Date.now() * 0.001) * 0.125 + 0.125 + Math.random() * 0.75;
+      newSignal = easeOutQuad(newSignal);
       newSignal = Math.round(newSignal / 0.2) * 0.2;
       setSignal(newSignal);
 

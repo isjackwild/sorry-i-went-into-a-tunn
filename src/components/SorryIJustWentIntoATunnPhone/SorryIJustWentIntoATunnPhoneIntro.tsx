@@ -63,7 +63,7 @@ const SorryIJustWentIntoATunnPhoneIntro = ({
         <input
           id="gemini-key-entry"
           type="text"
-          placeholder="paste here"
+          placeholder="paste your key here"
           value={apiKey || ""}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setApiKey(e.target.value)
