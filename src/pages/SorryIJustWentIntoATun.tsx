@@ -77,7 +77,7 @@ const SorryIJustWentIntoATunn = () => {
     const updateSignal = () => {
       let newSignal =
         Math.cos(Date.now() * 0.001) * 0.125 + 0.125 + Math.random() * 0.75;
-      newSignal = easeOutQuad(newSignal);
+      // newSignal = easeOutQuad(newSignal);
       newSignal = Math.round(newSignal / 0.2) * 0.2;
       setSignal(newSignal);
 
@@ -94,10 +94,10 @@ const SorryIJustWentIntoATunn = () => {
           recorderSignalParam.value = Math.min(1, newSignal * 1.5);
         }
       }
-      timeout = setTimeout(updateSignal, 1000 + Math.random() * 2000);
+      timeout = setTimeout(updateSignal, 1000 + Math.random() * 1000);
     };
 
-    timeout = setTimeout(updateSignal, 100 + Math.random() * 200);
+    timeout = setTimeout(updateSignal, 1000 + Math.random() * 100);
 
     return () => {
       clearTimeout(timeout);
