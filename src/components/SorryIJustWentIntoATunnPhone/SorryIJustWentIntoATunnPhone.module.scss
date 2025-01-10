@@ -13,7 +13,7 @@
   top: 5%;
   left: 5%;
   width: 90%;
-  height: 90%;
+  height: 94%;
   object-fit: cover;
 }
 
@@ -41,7 +41,7 @@
   top: 0;
   left: 0;
   width: 90%;
-  height: 60%;
+  height: 69%;
   left: 5%;
   top: 30%;
   // top: 30%;
@@ -54,7 +54,7 @@
   top: 5%;
   left: 0;
   width: 90%;
-  height: 90%;
+  height: 94%;
   left: 5%;
   // top: 30%;
   background: #fff;
@@ -91,6 +91,16 @@
   position: absolute;
   top: 25%;
   left: 5%;
+  background: red;
+  opacity: 0;
+}
+
+.credit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5%;
+  width: 100%;
   background: red;
   opacity: 0;
 }

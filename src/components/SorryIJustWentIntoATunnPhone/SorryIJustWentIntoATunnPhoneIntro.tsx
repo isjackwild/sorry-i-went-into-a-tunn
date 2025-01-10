@@ -77,6 +77,13 @@ const SorryIJustWentIntoATunnPhoneIntro = ({
       >
         Create Gemini API key
       </a>
+      <a
+        className={styles.credit}
+        href="https://www.isjackwild.com"
+        target="_blank"
+      >
+        by Jack Wild
+      </a>
     </div>
   );
 };

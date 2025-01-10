@@ -31,6 +31,13 @@ const SorryIJustWentIntoATunnPhone = ({
       />
       <SorryIJustWentIntoATunnNetwork signal={signal} />
       <SorryIJustWentIntoATunnTimer connected={connected} />
+      <a
+        className={styles.credit}
+        href="https://www.isjackwild.com"
+        target="_blank"
+      >
+        by Jack Wild
+      </a>
     </div>
   );
 };
